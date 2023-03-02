@@ -3465,11 +3465,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90637c8113085f54aa1a82ec7e6ad040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToMove: 0
   endingPos: {fileID: 1826317963}
   speed: 0.5
   direction: -1
   RB: {fileID: 1369238424}
+  duration: 3
 --- !u!54 &1369238424
 Rigidbody:
   m_ObjectHideFlags: 0
