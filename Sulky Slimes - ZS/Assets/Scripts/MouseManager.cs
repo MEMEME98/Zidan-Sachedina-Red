@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MouseManager : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class MouseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(livesManager.lives < 0)
+        if(livesManager.lives <= 0)
         {
             return;
         }
@@ -61,5 +62,15 @@ public class MouseManager : MonoBehaviour
             slime.transform.rotation = originalSlimePosition.rotation;
             slimeRigidbody.isKinematic = true;
         }
+
+        if(livesManager.lives == 0)
+        {
+            //ok
+        }
+    }
+
+    public void Die()
+    {
+        SceneManager.LoadScene(0);
     }
 }

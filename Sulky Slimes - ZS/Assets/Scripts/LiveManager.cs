@@ -22,6 +22,6 @@ public class LiveManager : MonoBehaviour
     public void RemoveLife()
     {
         lives -= 1;
-        print("You lost a life! Lives: " + lives);
+        hearts[lives].SetActive(false);
     }
 }
