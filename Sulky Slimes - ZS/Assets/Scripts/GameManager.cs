@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CakeCollision : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
+    public int lives;
+    public GameObject[] hearts;
     
     // Start is called before the first frame update
     void Start()
@@ -17,11 +19,9 @@ public class CakeCollision : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void RemoveLife()
     {
-        if (collision.gameObject.CompareTag("grass"))
-        {
-            Destroy(this.gameObject);
-        }
+        lives -= 1;
+        print("You lost a life! Lives: " + lives);
     }
 }

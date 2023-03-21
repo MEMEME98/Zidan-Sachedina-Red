@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class MouseManager : MonoBehaviour
 {
@@ -20,6 +22,10 @@ public class MouseManager : MonoBehaviour
 
     [Header("Lives")]
     public LiveManager livesManager;
+
+    [Header("Canvas")]
+    public TextMeshProUGUI tmp;
+    public Button restartButton;
     
     // Start is called before the first frame update
     void Start()
@@ -30,8 +36,15 @@ public class MouseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(livesManager.lives > 0)
+        {
+            tmp.gameObject.SetActive(false);
+            restartButton.gameObject.SetActive(false);
+        }
+        
         if(livesManager.lives <= 0)
         {
+            Invoke("almostDed", 5);
             return;
         }
         
@@ -72,5 +85,11 @@ public class MouseManager : MonoBehaviour
     public void Die()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void almostDed()
+    {
+        tmp.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
     }
 }
