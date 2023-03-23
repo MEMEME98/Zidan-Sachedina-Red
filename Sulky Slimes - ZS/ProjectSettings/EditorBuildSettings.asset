@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Sulky Slimes L1.unity
+    guid: 35fecaa2383cf7445b39c077042a5fdc
+  - enabled: 1
+    path: Assets/Scenes/Sulky Slimes L2.unity
+    guid: 04d70f86857aa7b47a4f8040579aeb33
+  - enabled: 1
+    path: Assets/Scenes/endingScene.unity
+    guid: b4c5322c89961eb4885fbb70b7dde94e
   m_configObjects: {}

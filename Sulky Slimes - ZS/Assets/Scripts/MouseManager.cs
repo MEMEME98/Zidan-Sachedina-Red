@@ -26,6 +26,7 @@ public class MouseManager : MonoBehaviour
     [Header("Canvas")]
     public TextMeshProUGUI tmp;
     public Button restartButton;
+    public TextMeshProUGUI startText;
     
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,8 @@ public class MouseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Invoke("start", 4);
+
         if(livesManager.lives > 0)
         {
             tmp.gameObject.SetActive(false);
@@ -91,5 +94,10 @@ public class MouseManager : MonoBehaviour
     {
         tmp.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
+    }
+
+    public void start()
+    {
+        startText.gameObject.SetActive(false);
     }
 }

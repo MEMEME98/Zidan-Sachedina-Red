@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Collectable : MonoBehaviour
 {
@@ -13,9 +14,10 @@ public class Collectable : MonoBehaviour
     public float speed = 0.1f;
     public float direction = 1f;
     public Rigidbody RB;
+    public int sceneNumber;
 
     public float duration;
-    float timeElapsed = 0;
+    float timeElapsed;
 
 
     public AnimationCurve benny;
@@ -84,6 +86,12 @@ public class Collectable : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             gameObject.SetActive(false);
+            Invoke("LoadNextScene", 2);
         }
+    }
+
+    private void LoadNextScene()
+    {
+        SceneManager.LoadScene(sceneNumber);
     }
 }
