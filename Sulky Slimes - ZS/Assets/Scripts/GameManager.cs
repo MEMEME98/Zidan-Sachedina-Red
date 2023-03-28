@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int lives;
@@ -23,5 +23,10 @@ public class GameManager : MonoBehaviour
     {
         lives -= 1;
         print("You lost a life! Lives: " + lives);
+    }
+
+    public void random()
+    {
+        SceneManager.LoadScene(1);
     }
 }
