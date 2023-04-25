@@ -31,7 +31,6 @@ public class Interact : MonoBehaviour
 
             if(triggerName == "Stove")
             {
-                print("Im at the stove!");
                 if(heldItemName == "breadSlice")
                 {
                     stove.ToastBread();
@@ -40,7 +39,23 @@ public class Interact : MonoBehaviour
                 }
                 else
                 {
-                    print("Codey is empty handed!");
+                    if(stove.cookedFood == "toast")
+                    {
+                        heldItem = Instantiate(breadPrefab, transform, false);
+                        heldItem.transform.localPosition = new Vector3(0, 4, 2);
+                        heldItem.transform.localScale = new Vector3(3, 3, 3);
+                        heldItemName = "toastSlice";
+                        stove.CleanStove();
+                    }
+                }
+            }
+
+            if(triggerName == "Receivers")
+            {
+                if(heldItemName == "toastSlice")
+                {
+                    Destroy(heldItem);
+                    heldItemName = "";
                 }
             }
         }

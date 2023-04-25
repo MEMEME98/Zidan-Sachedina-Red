@@ -5,6 +5,7 @@ using UnityEngine;
 public class Stove : MonoBehaviour
 {
     public GameObject toast;
+    public string cookedFood = "";
     
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,13 @@ public class Stove : MonoBehaviour
     public void ToastBread()
     {
         toast.SetActive(true);
+        cookedFood = "toast";
+    }
+
+    public void CleanStove()
+    {
+        toast.SetActive(false);
+        cookedFood = "";
     }
 
     // Update is called once per frame
