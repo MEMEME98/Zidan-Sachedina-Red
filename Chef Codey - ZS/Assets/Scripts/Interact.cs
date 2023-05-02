@@ -6,6 +6,7 @@ public class Interact : MonoBehaviour
 {
     public string triggerName = "";
     public GameObject breadPrefab;
+    public GameObject eggPrefab;
     public GameObject heldItem;
     public string heldItemName;
     public Stove stove;
@@ -21,30 +22,43 @@ public class Interact : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            if(triggerName == "Bread")
+
+            
+            Debug.Log(heldItemName);
+            if (triggerName == "Bread")
             {
-                heldItem = Instantiate(breadPrefab, transform, false);
-                heldItem.transform.localPosition = new Vector3(0, 4, 2);
-                heldItem.transform.localScale = new Vector3(3, 3, 3);
-                heldItemName = "breadSlice";
+                PickUpItem(breadPrefab, "breadSlice");
             }
 
-            if(triggerName == "Stove")
+            if(triggerName == "Egg")
             {
-                if(heldItemName == "breadSlice")
+                PickUpItem(eggPrefab, "egg");
+            }
+          
+            if (triggerName == "Stove")
+            {
+                Debug.Log("hehehehe");
+                if (heldItemName == "breadSlice")
                 {
                     stove.ToastBread();
-                    Destroy(heldItem.gameObject);
-                    heldItemName = "";
+                    PlaceHeldItem();
+                }
+                else if(heldItemName == "egg")
+                {
+                    Debug.Log("hehehehe");
+                    stove.FryEgg();
+                    PlaceHeldItem();
                 }
                 else
                 {
                     if(stove.cookedFood == "toast")
                     {
-                        heldItem = Instantiate(breadPrefab, transform, false);
-                        heldItem.transform.localPosition = new Vector3(0, 4, 2);
-                        heldItem.transform.localScale = new Vector3(3, 3, 3);
-                        heldItemName = "toastSlice";
+                        PickUpItem(breadPrefab, "toastSlice");
+                        stove.CleanStove();
+                    }
+                    if(stove.cookedFood == "friedEgg")
+                    {
+                        PickUpItem(eggPrefab, "friedEgg");
                         stove.CleanStove();
                     }
                 }
@@ -54,12 +68,31 @@ public class Interact : MonoBehaviour
             {
                 if(heldItemName == "toastSlice")
                 {
-                    Destroy(heldItem);
-                    heldItemName = "";
+                    PlaceHeldItem();
+                    GameObject.Find("Receivers/French Toast/toastSlice").SetActive(true);
+                }
+                if(heldItemName == "friedEgg")
+                {
+                    PlaceHeldItem();
+                    GameObject.Find("Receivers/French Toast/friedEgg").SetActive(true);
                 }
             }
         }
 
+    }
+
+    private void PlaceHeldItem()
+    {
+        Destroy(heldItem);
+        heldItemName = "";
+    }
+
+    private void PickUpItem(GameObject itemPrefab, string itemName)
+    {
+        heldItem = Instantiate(itemPrefab, transform, false);
+        heldItem.transform.localPosition = new Vector3(0, 4, 2);
+        heldItem.transform.localScale = new Vector3(3, 3, 3);
+        heldItemName = itemName;
     }
 
     private void OnTriggerEnter(Collider other)

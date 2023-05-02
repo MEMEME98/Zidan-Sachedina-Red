@@ -5,12 +5,14 @@ using UnityEngine;
 public class Stove : MonoBehaviour
 {
     public GameObject toast;
+    public GameObject friedEgg;
     public string cookedFood = "";
     
     // Start is called before the first frame update
     void Start()
     {
         toast.SetActive(false);
+        friedEgg.SetActive(false);
     }
 
     public void ToastBread()
@@ -19,9 +21,16 @@ public class Stove : MonoBehaviour
         cookedFood = "toast";
     }
 
+    public void FryEgg()
+    {
+        friedEgg.SetActive(true);
+        cookedFood = "friedEgg";
+    }
+
     public void CleanStove()
     {
         toast.SetActive(false);
+        friedEgg.SetActive(false);
         cookedFood = "";
     }
 
