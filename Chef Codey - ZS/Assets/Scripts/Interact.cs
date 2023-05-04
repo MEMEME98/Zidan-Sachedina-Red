@@ -22,9 +22,6 @@ public class Interact : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-
-            
-            Debug.Log(heldItemName);
             if (triggerName == "Bread")
             {
                 PickUpItem(breadPrefab, "breadSlice");
@@ -95,13 +92,13 @@ public class Interact : MonoBehaviour
         heldItemName = itemName;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)    
     {
         triggerName = other.name;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        triggerName = "";
+       triggerName = "";
     }
 }
