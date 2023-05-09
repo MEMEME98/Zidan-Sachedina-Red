@@ -34,7 +34,6 @@ public class Interact : MonoBehaviour
           
             if (triggerName == "Stove")
             {
-                Debug.Log("hehehehe");
                 if (heldItemName == "breadSlice")
                 {
                     stove.ToastBread();
@@ -42,7 +41,6 @@ public class Interact : MonoBehaviour
                 }
                 else if(heldItemName == "egg")
                 {
-                    Debug.Log("hehehehe");
                     stove.FryEgg();
                     PlaceHeldItem();
                 }
@@ -99,6 +97,10 @@ public class Interact : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-       triggerName = "";
+        if(triggerName == other.name)
+        {
+            triggerName = "";
+
+        }
     }
 }
