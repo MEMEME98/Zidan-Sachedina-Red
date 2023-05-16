@@ -46,12 +46,12 @@ public class Interact : MonoBehaviour
                 }
                 else
                 {
-                    if(stove.cookedFood == "toast")
+                    if(stove.cookedFood == "toast" && stove.isCooking == false)
                     {
                         PickUpItem(breadPrefab, "toastSlice");
                         stove.CleanStove();
                     }
-                    if(stove.cookedFood == "friedEgg")
+                    if(stove.cookedFood == "friedEgg" && stove.isCooking == false)
                     {
                         PickUpItem(eggPrefab, "friedEgg");
                         stove.CleanStove();
